@@ -25,7 +25,7 @@ namespace RIAA._5._1
             // Функции
             if (shtraf == 0)
                 // ЦПС, Наискорейший спуск
-                return 3 * Math.Pow(x[0], 2) + x[0] * x[1] + 2 * Math.Pow(x[1], 2) - x[0] - 2 * x[1];
+                return 2 * Math.Pow(x[0], 2) + 5 * x[0] * x[1] + 3 * Math.Pow(x[1], 2) + x[0] - x[1];
             else
                 // Штрафных функций
                 return (Math.Pow(x[0], 2) + Math.Pow(x[1], 2) - 5 * x[0] - 10 * x[1] + mu * Alfa(x));

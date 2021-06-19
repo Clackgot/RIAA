@@ -30,7 +30,7 @@ namespace RIAA._4
         }
         double f(double x)
         {
-            return 1/(1 + Math.Cos(x));
+            return x * Math.Pow(Math.E, x);
         }
         double Integ(double a, double b, int n, double y)
         {

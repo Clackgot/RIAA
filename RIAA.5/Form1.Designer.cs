@@ -1035,7 +1035,7 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(570, 32);
             this.label19.TabIndex = 30;
-            this.label19.Text = "3*x1*x1+2*x2*x2 - 6<=0";
+            this.label19.Text = "x1^2+x2-1<=0";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TabPenFunc_tableLayoutPanel_MinFunc
@@ -1079,7 +1079,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(321, 26);
             this.label15.TabIndex = 24;
-            this.label15.Text = "x1*x1+x2*x2-x1-2*x2";
+            this.label15.Text = "4x1^2+x2^2-2*x2";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label17

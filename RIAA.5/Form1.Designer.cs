@@ -1117,7 +1117,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Оптимизация двумерной функци                                                     " +
-    "          ФИТУ 2-5б Леднев Е.В. Курочкин. Д.С.";
+    "          ФИТУ 2-5 Леднев Е.В. Курочкин. Д.С.";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.TabHG_tableLayoutPanel_Down_panel_Clear.ResumeLayout(false);
             this.MainTabControl.ResumeLayout(false);

@@ -4,73 +4,620 @@ namespace RIAA._4
 {
     public partial class Form1 : Form
     {
+        private Panel inputs;
+        private Panel labels;
+
+        private NumericUpDown inputA;
+        private NumericUpDown inputB;
+        private NumericUpDown inputEps;
+        private NumericUpDown inputN;
+
+
         public Form1()
         {
             InitializeComponent();
+            inputs = panelInputs;
+            labels = panelLabels;
         }
-        private static string functionName = "(1 + Cos(x))";
 
-
-        private void tabPage1_button1_Click(object sender, EventArgs e)
+        private void Clear()
         {
-            double a = ((double)tabPage1_numericUpDown1.Value);//Левая граница интегрирования
-            double b = ((double)tabPage1_numericUpDown2.Value);//Правая граница интегрирования
-            double eps = ((double)tabPage1_numericUpDown3.Value);//Точность эпсилон
-            tabPage1_richTextBox1.Text = "";
-            tabPage1_richTextBox1.Text += $"    dx\n---------------  = {Lib.SimpsonMethod(a, b, eps)}\n{functionName}";
+            inputs.Controls.Clear();
+            labels.Controls.Clear();
         }
 
 
         /// <summary>
-        /// Основная функция
+        /// Метод Симпсона
         /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
-        double f(double x)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButtonSimpsonMethod_CheckedChanged(object sender, EventArgs e)
         {
-            return x * Math.Pow(Math.E, x);
-        }
-        
+            Clear();
 
-        private void tabPage2_button1_Click(object sender, EventArgs e)
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 2),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Левая граница интегрирования",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 29),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Правая граница интегрирования",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 56),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Точность эпсилон",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+
+            inputA = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+                    0,
+                    0,
+                    0,
+                    0 }),
+                Location = new System.Drawing.Point(3, -1),
+                Maximum = new decimal(new int[] {
+                    147483648,
+                    0,
+                    0,
+                    0 }),
+                Minimum = new decimal(new int[] {
+                    147483648,
+                    0,
+                    0,
+                    -2147483648 }),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 1
+            };
+            inputB = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, 26),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 2
+            };
+            inputEps = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, 53),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 1
+            };
+
+
+
+            inputs.Controls.Add(inputA);
+            inputs.Controls.Add(inputB);
+            inputs.Controls.Add(inputEps);
+        }
+
+
+
+        /// <summary>
+        /// Метод трапеций
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButtonTrapezoidMethod_CheckedChanged(object sender, EventArgs e)
         {
-            int n = ((int)tabPage2_numericUpDown3.Value);
-            double a = ((double)tabPage2_numericUpDown1.Value), b = ((double)tabPage2_numericUpDown2.Value);
-            tabPage2_richTextBox1.Text = "";
-            tabPage2_richTextBox1.Text += $"    dx\n---------------  = {Lib.TrapezoidMethod(a, b, n)}\n{functionName}";
+            Clear();
+
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 2),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Левая граница интегрирования",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 29),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Правая граница интегрирования",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 56),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Число отрезков",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+
+
+            inputA = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, -1),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 1
+            };
+            inputB = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, 26),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 2
+            };
+            inputN = new NumericUpDown()
+            {
+                DecimalPlaces = 0,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, 53),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 5
+            };
+
+
+
+            inputs.Controls.Add(inputA);
+            inputs.Controls.Add(inputB);
+            inputs.Controls.Add(inputN);
+
         }
-
-
-
-
-        private void tabPage3_button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод средних треугольников
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButtonMiddleRectangleMethod_CheckedChanged(object sender, EventArgs e)
         {
-            double a = ((double)tabPage3_numericUpDown4.Value), b = ((double)tabPage3_numericUpDown5.Value), eps = ((double)tabPage3_numericUpDown6.Value);
-            tabPage3_richTextBox2.Text = "";
-            tabPage3_richTextBox2.Text += $"    dx\n---------------  = {Lib.LeftRectangleMethod(a, b, eps)}\n{functionName}";
+            Clear();
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 2),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Левая граница интегрирования",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 29),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Правая граница интегрирования",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 56),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Число отрезков",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 83),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Точность эпсилон",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+
+            inputA = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, -1),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 1
+            };
+            inputB = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, 26),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 2
+            };
+
+            inputN = new NumericUpDown()
+            {
+                DecimalPlaces = 0,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, 53),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 10
+            };
+
+            inputEps = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, 80),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = (decimal)(0.004)
+            };
+
+
+            inputs.Controls.Add(inputA);
+            inputs.Controls.Add(inputB);
+            inputs.Controls.Add(inputN);
+            inputs.Controls.Add(inputEps);
+
         }
-
-
-
-        private void tabPage4_button3_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод левых треугольников
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButtonLeftRectangleMethod_CheckedChanged(object sender, EventArgs e)
         {
-            double a = ((double)tabPage4_numericUpDown7.Value), b = ((double)tabPage4_numericUpDown8.Value), eps = ((double)tabPage4_numericUpDown9.Value);
+            Clear();
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 2),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Левая граница интегрирования",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 29),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Правая граница интегрирования",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 56),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Точность эпсилон",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
 
-            
-            tabPage4_richTextBox3.Text = "";
-            tabPage4_richTextBox3.Text += $"    dx\n---------------  = {Lib.RightRectangleMethod(a, b, eps)}\n{functionName}";
+
+            inputA = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, -1),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 1
+            };
+            inputB = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, 26),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 2
+            };
+            inputEps = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, 53),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = (decimal)(0.004)
+            };
+
+
+            inputs.Controls.Add(inputA);
+            inputs.Controls.Add(inputB);
+            inputs.Controls.Add(inputEps);
         }
-
-
-        private void tabPage5_button4_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод правых треугольников
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButtonRightRectangleMethod_CheckedChanged(object sender, EventArgs e)
         {
-            double a = ((double)tabPage5_numericUpDown10.Value), b = ((double)tabPage5_numericUpDown11.Value), eps = ((double)tabPage5_numericUpDown12.Value), n = ((double)tabPage5_numericUpDown1.Value);
+            Clear();
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 2),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Левая граница интегрирования",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 29),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Правая граница интегрирования",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
+            labels.Controls.Add(new Label()
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(0, 56),
+                Size = new System.Drawing.Size(46, 17),
+                Text = "Точность эпсилон",
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            });
 
-            
-            tabPage5_richTextBox4.Text = "";
-            tabPage5_richTextBox4.Text += $"    dx\n---------------  = {Lib.MiddleRectangleMethod(a, b, eps, n)}\n{functionName}";
+            inputA = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, -1),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 1
+            };
+            inputB = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0}),
+                Location = new System.Drawing.Point(3, 26),
+                Maximum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            0}),
+                Minimum = new decimal(new int[] {
+            147483648,
+            0,
+            0,
+            -2147483648}),
+                Size = new System.Drawing.Size(120, 22),
+                Value = 2
+            };
+            inputEps = new NumericUpDown()
+            {
+                DecimalPlaces = 3,
+                Increment = new decimal(new int[] {
+                    0,
+                    0,
+                    0,
+                    0 }),
+                Location = new System.Drawing.Point(3, 53),
+                Maximum = new decimal(new int[] {
+                    147483648,
+                    0,
+                    0,
+                    0 }),
+                Minimum = new decimal(new int[] {
+                    147483648,
+                    0,
+                    0,
+                    -2147483648 }),
+                Size = new System.Drawing.Size(120, 22),
+                Value = (decimal)(0.004)
+            };
+
+            inputs.Controls.Add(inputA);
+            inputs.Controls.Add(inputB);
+            inputs.Controls.Add(inputEps);
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(radioButtonSimpsonMethod.Checked == true)
+            {
+                labelAnswer.Text = Lib.SimpsonMethod((double)inputA.Value, (double)inputB.Value, (double)inputEps.Value).ToString();
+            }
+            else if(radioButtonTrapezoidMethod.Checked == true)
+            {
+                labelAnswer.Text = Lib.TrapezoidMethod((double)inputA.Value, (double)inputB.Value, (int)inputN.Value).ToString();
+            }
+            else if (radioButtonLeftRectangleMethod.Checked == true)
+            {
+                labelAnswer.Text = Lib.LeftRectangleMethod((double)inputA.Value, (double)inputB.Value, (double)inputEps.Value).ToString();
+            }
+            else if (radioButtonRightRectangleMethod.Checked == true)
+            {
+                labelAnswer.Text = Lib.RightRectangleMethod((double)inputA.Value, (double)inputB.Value, (double)inputEps.Value).ToString();
+            }
+            else if (radioButtonMiddleRectangleMethod.Checked == true)
+            {
+                labelAnswer.Text = Lib.MiddleRectangleMethod((double)inputA.Value, (double)inputB.Value, (double)inputEps.Value, (int)inputN.Value).ToString();
+            }
+        }
     }
 }

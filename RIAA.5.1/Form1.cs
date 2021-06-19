@@ -40,7 +40,7 @@ namespace RIAA._5._1
             TabFD_MainPanel_down_StartPoint_x2.Enabled = true;
             TabFD_MainPanel_down_CritStopAndScale_CritStopTextBox.Enabled = true;
             TabFD_MainPanel_down_StartPoint_x1.Text = "2";
-            TabFD_MainPanel_down_StartPoint_x2.Text = "2";
+            TabFD_MainPanel_down_StartPoint_x2.Text = "-1";
             TabFD_MainPanel_down_CritStopAndScale_CritStopTextBox.Text = "0,00001";
             TabFD_MainPanel_down_CritStopAndScale_CritStopTextBox.Text = "0,00001";
             TabFD_MainPanel_down_CritStopAndScale_ScaleTextBox.Text = "50";
@@ -194,7 +194,7 @@ namespace RIAA._5._1
                 for (i = 0; i < razmer; i++)
                     y[i] = x[i];
                 tochka(x[0], x[1], cps);
-                // Предворительный шаг ЦПС
+                // Предварительный шаг ЦПС
                 for (i = 0; i < razmer; i++)
                 {
                     j = qwerty.Nach(x, d[i], e_gold, shtraf, mu, tb1, tb2);

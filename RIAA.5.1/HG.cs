@@ -34,12 +34,14 @@ namespace RIAA._5._1
         public double Alfa(double[] r)
         {
             double a = 0.0;
-            if (r[0] * r[0] - 2 * r[1] > 0)
+            var alf1 = r[0] * r[0] + r[1] - 1;
+            var alf2 = r[0] - r[1];
+            if (alf1 > 0)
             // Обратное допустимой 1 половина области и н же штраф
-            { a += r[0] * r[0] - 2 * r[1]; }
-            if ((-2) * r[0] + r[1] > 0)
+            { a += alf1; }
+            if (alf2 > 0)
             // Обратное допустимой 1 половина области и н же штраф
-            { a += (-2) * r[0] + r[1]; }
+            { a += alf2; }
             return a;
         }
         public double Nach(double[] x1, double[] d, double e_gold, int shtraf, double mu, double[] tb1, double[] tb2)

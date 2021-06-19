@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIAA.5", "RIAA.5\RIAA.5.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIAA.5.1", "RIAA.5.1\RIAA.5.1.csproj", "{5F2D4267-14CD-4258-9EBC-979EC0E5FBF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIAA.4", "RIAA.4\RIAA.4.csproj", "{7292D841-7493-4C29-AB0D-EDF029E1BE7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5F2D4267-14CD-4258-9EBC-979EC0E5FBF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F2D4267-14CD-4258-9EBC-979EC0E5FBF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F2D4267-14CD-4258-9EBC-979EC0E5FBF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7292D841-7493-4C29-AB0D-EDF029E1BE7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7292D841-7493-4C29-AB0D-EDF029E1BE7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7292D841-7493-4C29-AB0D-EDF029E1BE7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7292D841-7493-4C29-AB0D-EDF029E1BE7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

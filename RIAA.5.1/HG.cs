@@ -28,7 +28,7 @@ namespace RIAA._5._1
                 return 2 * Math.Pow(x[0], 2) + 5 * x[0] * x[1] + 3 * Math.Pow(x[1], 2) + x[0] - x[1];
             else
                 // Штрафных функций
-                return (Math.Pow(x[0], 2) + Math.Pow(x[1], 2) - 5 * x[0] - 10 * x[1] + mu * Alfa(x));
+                return (4 * Math.Pow(x[0], 2) + Math.Pow(x[1], 2) - 2 * x[1] + mu * Alfa(x));
         }
         // Функция штрафа 
         public double Alfa(double[] r)

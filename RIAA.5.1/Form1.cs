@@ -167,12 +167,12 @@ namespace RIAA._5._1
 
                 // Предворительный шаг ЦПС
                 grad(d, y);
-                j = qwerty.nach(x, d, e_gold, shtraf, mu, tb1, tb2);
+                j = qwerty.Nach(x, d, e_gold, shtraf, mu, tb1, tb2);
                 for (i = 0; i < razmer; i++)
                     x[i] = x[i] + j * d[i];
                 tochka(x[0], x[1], cps);
 
-                epselum = Math.Sqrt(qwerty.proverka(x, y));
+                epselum = Math.Sqrt(qwerty.Checking(x, y));
             }
             return x;
         }
@@ -197,11 +197,11 @@ namespace RIAA._5._1
                 // Предворительный шаг ЦПС
                 for (i = 0; i < razmer; i++)
                 {
-                    j = qwerty.nach(x, d[i], e_gold, shtraf, mu, tb1, tb2);
+                    j = qwerty.Nach(x, d[i], e_gold, shtraf, mu, tb1, tb2);
                     x[i] = x[i] + j;
                     tochka(x[0], x[1], cps);
                 }
-                epselum = Math.Sqrt(qwerty.proverka(x, y));
+                epselum = Math.Sqrt(qwerty.Checking(x, y));
             }
             return x;
         }
@@ -245,7 +245,7 @@ namespace RIAA._5._1
                     while (vr2 < 100)
                     {
                         vr[1] = vr2;
-                        if (qwerty.alfa(vr) <= 0) g.FillEllipse(Brushes.Black, (float)((vr[0] * ma + x_mid[0] * 1.5)), (float)((vr[1] * ma + x_mid[1] * 1.5)), (int)(2), (int)(2));
+                        if (qwerty.Alfa(vr) <= 0) g.FillEllipse(Brushes.Black, (float)((vr[0] * ma + x_mid[0] * 1.5)), (float)((vr[1] * ma + x_mid[1] * 1.5)), (int)(2), (int)(2));
                         vr2 += 0.3;
                     }
                     vr2 = -1000;
@@ -291,19 +291,19 @@ namespace RIAA._5._1
                 return;
             }
             TabPenFunc_MainPanel_Right_Graph.Invalidate();
-            qwerty.alfa(re);
+            qwerty.Alfa(re);
             if (Math.Abs(re[0]) <= 1 && Math.Abs(re[1]) <= 1) re[0] = 2;
-            while (Math.Abs(qwerty.alfa(re)) > pogr)
+            while (Math.Abs(qwerty.Alfa(re)) > pogr)
             {
                 pogr = double.Parse(TabFD_MainPanel_down_CritStopAndScale_CritStopTextBox.Text);
                 ru = cps(pogr, re, 2, 1, mu);
                 re = ru;
-                if (Math.Abs(qwerty.alfa(re)) < pogr) break;
+                if (Math.Abs(qwerty.Alfa(re)) < pogr) break;
                 mu = mu * 10;
                 pogr = double.Parse(TabFD_MainPanel_down_CritStopAndScale_CritStopTextBox.Text);
             }
             double fvr;
-            fvr = qwerty.function(ru, ru, 0, 1, 0);
+            fvr = qwerty.Function(ru, ru, 0, 1, 0);
             TabPenFunc_MainPanel_Right_OutPut.Text = "Точка минимумума\nс учетом допустимой области:\n";
             TabPenFunc_MainPanel_Right_OutPut.Text += "x1=" + ru[0].ToString() + "\n"
                 + "x2=" + ru[1].ToString() + "\n\nf(x1,x2)= " + fvr.ToString();
